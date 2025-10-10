@@ -18,7 +18,7 @@ A Chromium extension that adds **custom rating dimensions** (e.g. *Cohesion*, *I
 
 ## 🖊️ Usage
 - Open your AniList anime list and select the extension.
-- **Adding dimensions:** Enter the name of a new dimension and select `add`.
+- **Adding dimensions:** Enter the name of a new dimension and select `Add`.
 - **Removing dimensions:** Click `Remove` next to a saved dimension.
 - **Enter ratings** by typing in input fields in the new columns. Values are saved automatically and restored on reload.
 - You can `Back Up Data` if you wish to transfer it to another device or browser. Data is stored locally in your browser; it does not sync across devices.
