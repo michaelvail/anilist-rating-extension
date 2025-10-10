@@ -1,0 +1,51 @@
+/* Headers */
+.custom-dimension-header {
+  font-family: Roboto, -apple-system, BlinkMacSystemFont, Segoe UI, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  font-size: 1.5rem;
+  font-weight: 500;
+  line-height: 1.15;
+  text-align: center;
+  color: rgb(var(--color-text));
+  background: rgb(var(--color-foreground));
+  -webkit-font-smoothing: antialiased;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+/* Inputs */
+.custom-dimension-input {
+  font-family: Roboto, -apple-system, BlinkMacSystemFont, Segoe UI, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  font-size: 1.5rem;
+  line-height: 1.15;
+  text-align: center;
+  color: rgb(var(--color-text));
+  background: rgb(var(--color-background));
+  border: 1px solid rgb(var(--color-gray-500));
+  border-radius: 4px;
+  -webkit-font-smoothing: antialiased;
+  padding: 6px 8px;
+  width: 100%;
+  min-width: 50px;
+  max-width: 60px;
+  box-sizing: border-box;
+  justify-self: center;
+}
+
+.list-head.row,
+.entry.row {
+  display: grid;
+  grid-template-columns:
+    auto         /* cover */
+    1fr          /* title */
+    80px         /* score */
+    repeat(var(--custom-dim-count), minmax(60px, 1fr)) /* custom dims */
+    100px        /* progress */
+    80px;        /* type */
+  align-items: center;
+  column-gap: 8px;
+}
+
+.custom-dimensions,
+.custom-dimension-headers {
+  display: contents;
+}
