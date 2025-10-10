@@ -1,0 +1,28 @@
+{
+  "manifest_version": 3,
+  "name": "AniList Custom Rating Dimensions",
+  "version": "1.0",
+  "description": "Add custom rating dimensions to AniList.",
+  "content_scripts": [
+    {
+      "matches": ["*://anilist.co/*"],
+      "js": ["content.js"],
+      "css": ["content.css"]
+    }
+  ],
+  "permissions": ["storage"],
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "AniList Custom Rating Dimensions",
+    "default_icon": {
+      "19": "icons/icon19.png",
+      "38": "icons/icon38.png"
+    }
+  },
+  "icons": {
+    "16": "icons/icon16.png",
+    "32": "icons/icon32.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  }
+}

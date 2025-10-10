@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>AniList Custom Rating Dimensions</title>
+        <link rel="stylesheet" href="popup.css">
+    </head>
+    <body>
+        <div class="section">
+            <h2>Backup & Restore</h2>
+            <div class="button-row">
+            <button id="backup" class="btn primary">Back Up Data</button>
+            <button id="restore" class="btn secondary">Restore Data</button>
+            <input type="file" id="restore-file" accept="application/json" hidden />
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Custom Dimensions</h2>
+            <div class="dimension-input-row">
+            <input id="new-dimension" placeholder="New dimension" />
+            <button id="add-btn" class="btn primary">Add</button>
+            </div>
+            <ul id="dimensions-list"></ul>
+        </div>
+
+        <script src="popup.js"></script>
+    </body>
+</html>
