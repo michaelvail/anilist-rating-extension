@@ -30,17 +30,64 @@ function renderDimensions(dimensions) {
 
   dimensions.forEach((dim, index) => {
     const li = document.createElement("li");
-    li.textContent = dim;
+    li.className = "dimension-item";
+    li.dataset.index = index;
+    li.dataset.name = dim;
+
+    const handle = document.createElement("span");
+    handle.className = "drag-handle";
+    handle.textContent = "\u2630";
+    handle.draggable = true;
+
+    const label = document.createElement("span");
+    label.className = "label";
+    label.textContent = dim;
 
     const btn = document.createElement("button");
-    btn.textContent = "Remove";
     btn.className = "remove-btn";
-    btn.dataset.index = index;
+    btn.textContent = "\u2715";
+    btn.addEventListener("click", () => {
+      const newDims = dimensions.filter(d => d !== dim);
+      chrome.storage.local.set({ dimensions: newDims }, () => {
+        renderDimensions(newDims);
+      });
+    });
+    
+    li.appendChild(handle);
+    li.appendChild(label);
     li.appendChild(btn);
-
     list.appendChild(li);
+
+    handle.addEventListener("dragstart", e => {
+      draggedItem = li;
+      e.dataTransfer.effectAllowed = "move";
+      e.dataTransfer.setData("text/plain", li.dataset.name);
+    });
   });
 }
+
+// Drag and drop reordering
+const list = document.getElementById("dimensions-list");
+let draggedItem = null;
+
+list.addEventListener("dragover", event => {
+  event.preventDefault();
+  const target = event.target.closest(".dimension-item");
+  if (target && target !== draggedItem) {
+    const rect = target.getBoundingClientRect();
+    const next = (event.clientY - rect.top) / rect.height > 0.5;
+    list.insertBefore(draggedItem, next ? target.nextSibling : target);
+  }
+});
+
+list.addEventListener("dragend", e => {
+  e.preventDefault();
+  const newOrder = Array.from(list.querySelectorAll(".dimension-item"))
+    .map(li => li.dataset.name);
+  chrome.storage.local.set({ dimensions: newOrder }, () => {
+    renderDimensions(newOrder);
+  });
+});
 
 async function onAddDimension() {
   const input = document.getElementById("new-dimension");
