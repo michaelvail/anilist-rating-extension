@@ -2,6 +2,8 @@
 
 A Chromium extension that adds **custom rating dimensions** (e.g. *Cohesion*, *Impact*, etc.) to your AniList anime list. It lets you track more than just the default composite score — you can create your own categories and enter values (numbers, text, emojis). They’ll be saved locally in your browser.
 
+<img width="1137" height="311" alt="image" src="https://github.com/user-attachments/assets/3f80a952-3b75-443c-a8ac-1ae332b0f46d" />
+
 ## ✨ Features
 - Add any number of custom rating dimensions.
 - Enter free‑form values (numbers, text, symbols).
