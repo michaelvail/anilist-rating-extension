@@ -44,36 +44,54 @@ function injectHeaders(dimensions) {
 }
 
 function injectRowInputs(dims, ratings) {
-  qa(".entry.row").forEach(row => {
+  document.querySelectorAll(".entry.row").forEach(row => {
     const link = row.querySelector(".title a");
     const animeId = link ? (link.getAttribute("href") || "").split("/")[2] : null;
     if (!animeId) return;
-
-    row.querySelectorAll(".custom-dimension-cell").forEach(el => el.remove());
 
     const scoreEl = row.querySelector(".score");
     if (!scoreEl) return;
 
     let insertAfter = scoreEl;
+
     dims.forEach(dim => {
-      const cell = document.createElement("div");
-      cell.className = "column custom-dimension-cell";
+      let cell = row.querySelector(`.custom-dimension-cell[data-dim="${dim}"]`);
+      if (!cell) {
+        cell = document.createElement("div");
+        cell.className = "column custom-dimension-cell";
+        cell.dataset.dim = dim;
 
-      const input = document.createElement("input");
-      input.type = "text";
-      input.dataset.dim = dim;
-      input.className = "custom-dimension-input";
-      input.value = ratings[animeId]?.[dim] ?? "";
+        const input = document.createElement("input");
+        input.type = "text";
+        input.id = `dim-${animeId}-${dim}`;
+        input.name = `dim-${animeId}-${dim}`;
+        input.className = "custom-dimension-input";
 
-      input.addEventListener("input", () => {
-        saveRating(animeId, dim, input.value.trim());
-      });
+        input.addEventListener("input", debounce(() => {
+          saveRating(animeId, dim, input.value.trim());
+        }, 250));
 
-      cell.appendChild(input);
-      insertAfter.insertAdjacentElement("afterend", cell);
+        cell.appendChild(input);
+        insertAfter.insertAdjacentElement("afterend", cell);
+      }
+
+      const input = cell.querySelector("input");
+      const newVal = ratings[animeId]?.[dim] ?? "";
+      if (document.activeElement !== input && input.value !== newVal) {
+        input.value = newVal;
+      }
+
       insertAfter = cell;
     });
   });
+}
+
+function debounce(fn, delay = 250) {
+  let timer;
+  return (...args) => {
+    clearTimeout(timer);
+    timer = setTimeout(() => fn(...args), delay);
+  };
 }
 
 // ---------- Render ----------
