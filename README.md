@@ -25,3 +25,5 @@ A Chromium extension that adds **custom rating dimensions** (e.g. *Cohesion*, *I
 - **Enter ratings** by typing in input fields in the new columns. Values are saved automatically and restored on reload.
 - You can `Back Up Data` if you wish to transfer it to another device or browser. Data is stored locally in your browser; it does not sync across devices.
 - Select `Restore Data` to import your saved data.
+
+### If this project was valuable to you, please feel free to [fund](https://ko-fi.com/michaelvail) my matcha addiction.
