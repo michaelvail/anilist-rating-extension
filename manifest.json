@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "AniList Custom Rating Dimensions",
-  "version": "1.0",
+  "version": "1.0.0",
   "description": "Add custom rating dimensions to AniList.",
   "content_scripts": [
     {
