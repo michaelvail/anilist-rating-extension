@@ -28,4 +28,4 @@ A Chromium extension that adds **custom rating dimensions** (e.g. *Cohesion*, *I
 
 ---
 
-### If this project was valuable to you, please feel free to [fund](https://ko-fi.com/michaelvail) my matcha addiction.
+### If this project was valuable to you, please feel free to [fund](https://ko-fi.com/michaelvail) my matcha addiction 🍵
